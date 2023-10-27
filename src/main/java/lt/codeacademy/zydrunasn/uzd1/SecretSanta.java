@@ -3,20 +3,26 @@ package lt.codeacademy.zydrunasn.uzd1;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public final class SecretSanta {
     public void peopleToExchangeGifts() throws IOException {
-        List<String> people = fileReader();
-        System.out.printf("%s -> %s",
-                randomPersonName(people),
-                randomPersonName(people));
+        final String person1, person2;
+        List <String> people = fileReader();
+
+        person1 = randomPersonName(people);
+        people.remove(person1);
+        person2 = randomPersonName(people);
+
+        System.out.printf("%s -> %s",person1, person2);
     }
 
-    private List<String>  fileReader() throws IOException {
+    private ArrayList<String>  fileReader() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/resources/vardai.txt"));
-        List<String> list = List.of(reader.readLine().split(","));
+        ArrayList<String> list = new ArrayList<>(List.of(reader.readLine().split(",")));
         return list;
     }
 
