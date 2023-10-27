@@ -10,20 +10,21 @@ import java.util.Random;
 
 public final class SecretSanta {
     public void peopleToExchangeGifts() throws IOException {
-        final String person1, person2;
+        String person1, person2;
         List <String> people = fileReader();
 
-        person1 = randomPersonName(people);
-        people.remove(person1);
-        person2 = randomPersonName(people);
-
-        System.out.printf("%s -> %s",person1, person2);
+        while (!people.isEmpty()) {
+            person1 = randomPersonName(people);
+            people.remove(person1);
+            person2 = randomPersonName(people);
+            people.remove(person2);
+            System.out.printf("%s -> %s\n",person1, person2);
+        }
     }
 
     private ArrayList<String>  fileReader() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/resources/vardai.txt"));
-        ArrayList<String> list = new ArrayList<>(List.of(reader.readLine().split(",")));
-        return list;
+        return new ArrayList<>(List.of(reader.readLine().split(",")));
     }
 
     private String randomPersonName(List<String> list) {
