@@ -12,15 +12,4 @@ import java.util.stream.Collectors;
  */
 public class SecretSanta {
 
-    public static List<String> readFiles(String fileName){
-        try {
-            var reader = new BufferedReader(new FileReader(fileName));
-            return reader.lines().collect(Collectors.toList());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-
 }
