@@ -12,12 +12,13 @@ public class App {
     public static void main(String[] args) {
         String path = "./src/resources/vardai.txt";
 
-        List<String> lines = readLines("./src/resources/vardai.txt");
+        List<String> lines = readLines(path);
         for (String line : lines) {
             System.out.println((line));
         }
 
         Random random=new Random();
+
 
     }
 
