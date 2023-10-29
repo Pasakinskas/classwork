@@ -13,7 +13,6 @@ public class Application {
         List<String> gavoDovana = new ArrayList<>();
 
         vardai = SecretSanta.readLines("./src/resources/vardai.txt");
-        System.out.println(vardai);
 
         for (int i = 0; i < vardai.size(); i++) {
 
@@ -26,9 +25,10 @@ public class Application {
                 if (randomVardas.equals(vardas)) {
                 } else if (gavoDovana.contains(randomVardas)) {
                 } else {
-                    System.out.println(randomVardas + " gavo dovana nuo " + vardas);
+                    System.out.println(randomVardas.replace(",", "") +
+                            " gavo dovana nuo " +
+                            vardas.replace(",", ""));
                     gavoDovana.add(randomVardas);
-
                     baigta = true;
                 }
             }
