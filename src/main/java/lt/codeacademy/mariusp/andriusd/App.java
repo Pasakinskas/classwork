@@ -8,7 +8,7 @@ public class App {
 
     public static void main(String[] args) throws FileNotFoundException {
 //        try {
-//            pirmasEtapas();
+//            pirmasEtapas();   //reikalingas tik tada kai yra naujas sarasas be numeracijos
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
@@ -50,6 +50,7 @@ public class App {
     public static void antrasEtapas() throws FileNotFoundException {
 
         var path2 = ("./src/main/java/lt/codeacademy/mariusp/andriusd/papildytivardai.txt");
+
         List<String> lines = readLines(path2);
         System.out.println("Vardu skaicius=" + lines.size());
 
@@ -59,14 +60,14 @@ public class App {
         List<Integer> spetiSk = new ArrayList<>();
         List<Integer> spetiSk2 = new ArrayList<>();
         System.out.println("==============Zmones kurie tekia dovanas:================");
-        int varduSkaicius = lines.size() +1;
+        int varduSkaicius = lines.size() + 1;
         for (int i = 1; i < 500; i++) {
             int randomskaicius = random.nextInt(varduSkaicius);
 
-            if (!spetiSk.contains(randomskaicius) && randomskaicius!= 0) {
-                String vardas=lines.get(randomskaicius-1).split(" ")[1];
+            if (!spetiSk.contains(randomskaicius) && randomskaicius != 0) {
+                String vardas = lines.get(randomskaicius - 1).split(" ")[1];
                 spetiSk.add(randomskaicius);
-                System.out.print(" "+vardas); // gaunu random vardus
+                System.out.print(" " + vardas); // gaunu random vardus
 
             } else if (spetiSk.size() == 12) {
                 break;
@@ -78,25 +79,15 @@ public class App {
         for (int i = 1; i < 5000; i++) {
             int randomskaicius2 = random.nextInt(varduSkaicius);
             if (!spetiSk2.contains(randomskaicius2) && !(randomskaicius2 == 0)) {
-                String vardas=lines.get(randomskaicius2-1).split(" ")[1];
+                String vardas = lines.get(randomskaicius2 - 1).split(" ")[1];
                 spetiSk2.add(randomskaicius2);
-                System.out.print(" "+vardas);
+                System.out.print(" " + vardas);
             } else if (spetiSk2.size() == 12) {
                 break;
             }
         }
         System.out.println();
         System.out.println("============Zmones kurie gauna dovanas================");
-//        System.out.println(spetiSk);
-//        System.out.println(spetiSk2);
-
-//        for (int i = 0; i < spetiSk.size(); i++) {
-//            if (spetiSk.get(i).equals(spetiSk2.get(i))) {
-//
-//                System.out.println("Vienodi elementai rasti: " + spetiSk.get(i) + " pozicijoje " + (i + 1));
-//
-//            }
-//        }
     }
 
 
