@@ -32,6 +32,7 @@ public class App {
                 sunumeruotiVardai.put(sk++, vardas);
             }
         }
+
         sunumeruotiVardai.forEach((key, value) -> {
             System.out.println(key + " " + value);
         });
@@ -49,7 +50,7 @@ public class App {
 
     public static void antrasEtapas() throws FileNotFoundException {
 
-        var path2 = ("./src/main/java/lt/codeacademy/mariusp/andriusd/papildytivardai.txt");
+        var path2 = ("./src/main/java/lt/codeacademy/andriusd/papildytivardai.txt");
 
         List<String> lines = readLines(path2);
         System.out.println("Vardu skaicius=" + lines.size());
