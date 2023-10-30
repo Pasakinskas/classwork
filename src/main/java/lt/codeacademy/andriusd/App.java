@@ -1,4 +1,4 @@
-package lt.codeacademy.mariusp.andriusd;
+package lt.codeacademy.andriusd;
 
 import java.io.*;
 import java.util.*;
@@ -35,7 +35,7 @@ public class App {
         sunumeruotiVardai.forEach((key, value) -> {
             System.out.println(key + " " + value);
         });
-        var writer = new BufferedWriter(new FileWriter("./src/main/java/lt/codeacademy/mariusp/andriusd/papildytivardai.txt"));
+        var writer = new BufferedWriter(new FileWriter("./src/main/java/lt/codeacademy/andriusd/papildytivardai.txt"));
 //
         for (var entry : sunumeruotiVardai.entrySet()) {
             writer.write(entry.getKey() + " " + entry.getValue());
