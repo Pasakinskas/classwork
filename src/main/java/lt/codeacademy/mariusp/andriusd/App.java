@@ -1,26 +1,29 @@
 package lt.codeacademy.mariusp.andriusd;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class App {
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws FileNotFoundException {
+//        try {
+//            pirmasEtapas();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
         antrasEtapas();
     }
 
-    public static void pirmasEtapas() {
+    public static void pirmasEtapas() throws IOException {
 
         String path = "./src/resources/vardai.txt";
 
         List<String> lines = readLines(path);
         List<String> vardai = new ArrayList<>();
+
         HashMap<Integer, String> sunumeruotiVardai = new HashMap<>();
-        int sk = 0;
+        int sk = 1;
 
         for (String line : lines) {
             String[] splitVardai = line.split(", ");
@@ -32,25 +35,47 @@ public class App {
         sunumeruotiVardai.forEach((key, value) -> {
             System.out.println(key + " " + value);
         });
+        var writer = new BufferedWriter(new FileWriter("./src/main/java/lt/codeacademy/mariusp/andriusd/papildytivardai.txt"));
+//
+        for (var entry : sunumeruotiVardai.entrySet()) {
+            writer.write(entry.getKey() + " " + entry.getValue());
+            writer.newLine();
+        }
+        writer.flush();
+        writer.close();
+        System.out.println(vardai.size());
+
     }
 
-    public static void antrasEtapas() {
+    public static void antrasEtapas() throws FileNotFoundException {
+
+        var path2 = ("./src/main/java/lt/codeacademy/mariusp/andriusd/papildytivardai.txt");
+        List<String> lines = readLines(path2);
+        System.out.println("Vardu skaicius="+lines.size());
+
         final Random random = new Random();
         final Random random2 = new Random();
 
         List<Integer> spetiSk = new ArrayList<>();
         List<Integer> spetiSk2 = new ArrayList<>();
 
-        int varduSkaicius = 15;
-        for (int i = 0; i < varduSkaicius; i++) {
+        int varduSkaicius = lines.size() + 1;
+        for (int i = 1; i < 5000; i++) {
             int randomskaicius = random.nextInt(varduSkaicius);
-            int randomskaicius2 = random.nextInt(varduSkaicius);
 
-            if (!spetiSk.contains(randomskaicius)) {
+            if (!spetiSk.contains(randomskaicius) && !(randomskaicius == 0)) {
                 spetiSk.add(randomskaicius);
+
+            } else if (spetiSk.size() == 12) {
+                break;
             }
-            if (!spetiSk2.contains(randomskaicius2)) {
+        }
+        for (int i = 1; i < 5000; i++) {
+            int randomskaicius2 = random.nextInt(varduSkaicius);
+            if (!spetiSk2.contains(randomskaicius2) && !(randomskaicius2 == 0)) {
                 spetiSk2.add(randomskaicius2);
+            } else if (spetiSk2.size() == 12) {
+                break;
             }
         }
         System.out.println(spetiSk);
@@ -58,6 +83,9 @@ public class App {
 
 
     }
+
+
+
 
 
     public static List<String> readLines(String path) {
