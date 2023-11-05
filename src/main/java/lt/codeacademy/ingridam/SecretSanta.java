@@ -8,12 +8,10 @@ import java.util.stream.Collectors;
 
 public class SecretSanta {
 
-
-
-    public static List<String> readFiles(String fileName){
+    public static String readFiles(String fileName){
         try {
             var reader = new BufferedReader(new FileReader(fileName));
-            return reader.lines().collect(Collectors.toList());
+            return reader.lines().collect(Collectors.toList()).get(0);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
