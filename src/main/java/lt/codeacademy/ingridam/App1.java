@@ -36,22 +36,22 @@ public class App1 {
 
     private static String generuotiDovanosGaveja(String dovanoja, List<Pora> poros, Random random, List<String> vardai) {
         int index = random.nextInt(0, vardai.size()); //gauname random dovanos gaveja pagal random Index
-        String galbutGaunaDovana = vardai.get(index);
+        String galimaiGaunaDovana = vardai.get(index);
         Boolean tikraiGaunaDovana = false;
         while (!tikraiGaunaDovana) { //generuojame random zmogu kol surandame tinkama
-            if (arGaliButiPora(dovanoja, galbutGaunaDovana, poros)) { // Jeigu nedovanoja sau ir nedovanoja tam kas jau gavo dovana
+            if (arGaliButiPora(dovanoja, galimaiGaunaDovana, poros)) { // Jeigu nedovanoja sau ir nedovanoja tam kas jau gavo dovana
                 tikraiGaunaDovana = true;
             } else {
                 index = random.nextInt(0, vardai.size());
-                galbutGaunaDovana = vardai.get(index);
+                galimaiGaunaDovana = vardai.get(index);
             }
         }
-        return galbutGaunaDovana;
+        return galimaiGaunaDovana;
     }
 
-    private static boolean arJauGavoDovana(List<Pora> poros, String galbutGaunaDovana) {
+    private static boolean arJauGavoDovana(List<Pora> poros, String galimaiGaunaDovana) {
         for (int i = 0; i < poros.size(); i++) {
-            if (galbutGaunaDovana.equals(poros.get(i).gaunaDovana)) {
+            if (galimaiGaunaDovana.equals(poros.get(i).gaunaDovana)) {
                 return true;
             }
         }
